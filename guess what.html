@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You've Been Trolled</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevents scrollbars */
+            background-color: #333;
+        }
+        
+        #trolledText {
+            position: absolute;
+            font-family: Arial, sans-serif;
+            font-size: 50px;
+            font-weight: bold;
+            color: #FF6347; /* Tomato color */
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="trolledText">YOU'VE BEEN TROLLED</div>
+
+    <script>
+        const textElement = document.getElementById('trolledText');
+        const textWidth = textElement.offsetWidth;
+        const textHeight = textElement.offsetHeight;
+
+        let positionX = Math.random() * (window.innerWidth - textWidth);
+        let positionY = Math.random() * (window.innerHeight - textHeight);
+        let velocityX = 3;
+        let velocityY = 3;
+
+        function moveText() {
+            positionX += velocityX;
+            positionY += velocityY;
+
+            // Bounce off the edges
+            if (positionX <= 0 || positionX + textWidth >= window.innerWidth) {
+                velocityX = -velocityX;
+            }
+
+            if (positionY <= 0 || positionY + textHeight >=
